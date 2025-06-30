@@ -4,11 +4,14 @@
 
 void insertFirst(Node** head, int data) 
 {
-	Node* first =(Node*) malloc(sizeof(Node));
-	first->data = data;
-	first->next = NULL;
-	first->prev = NULL;
-	*head = first;
+	Node* newNode = (Node*)malloc(sizeof(Node));
+	newNode->data = data;
+	newNode->next = *head;
+	newNode->prev = NULL;
+	if(*head)
+		(*head)->prev = newNode;
+	*head = newNode;
+	return;
 }
 
 int length(Node* head) 
@@ -19,8 +22,48 @@ int length(Node* head)
 	return count;
 }
 
-void insertAtIndex(Node** head, int data)
+/*
+To add at the end using index = -1
+*/
+void insertAtIndex(Node** head, int data, int index)
 {
+	if (*head == NULL || index==0) {
+		insertFirst(head, data);
+		return;
+	}
+
+
+	//now create a new node
+	Node* newNode = (Node*)malloc(sizeof(Node));
+	newNode->data = data;
+	newNode->next = NULL;
+	newNode->prev = NULL;
+
+	if (index<POS_END || index >= length(*head)) {
+		return;
+	}
+
+	if (index == POS_END)
+		index = length(*head);
+
+
+	if (index == 0) {
+		
+	}
+
+	//navigate to index-1
+	Node* previous = *head;
+	for (int i = 0;  i < index - 1; i++)
+		previous = previous->next;
+
+	//now insert after previous;
+	newNode->prev = previous;
+	newNode->next = previous->next;
+	if(previous->next)
+		previous->next->prev = newNode;
+	previous->next = newNode;
+
+	
 
 }
 void removeNode(Node** head, int index)
