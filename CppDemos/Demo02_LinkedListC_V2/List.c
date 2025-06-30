@@ -91,3 +91,13 @@ int listShow(List* list, char* prompt) {
 	return c;
 }
 
+int listGet(List* list, int index) {
+	if (index < 0 || index >= listLength(list))
+		return -1;
+	Node* n = list -> first;
+	for (int i = 0; i < index; i++)
+		n = n->next;
+
+	return n->data;
+
+}

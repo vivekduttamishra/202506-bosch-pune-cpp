@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7D6D87C7-DC6F-40F3-A6FA-CCE1C9745586}|Demo02_LinkedListC_V2\\Demo02_LinkedListC_V2.vcxproj|D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo02_LinkedListC_V2\\list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D6D87C7-DC6F-40F3-A6FA-CCE1C9745586}|Demo02_LinkedListC_V2\\Demo02_LinkedListC_V2.vcxproj|solutionrelative:Demo02_LinkedListC_V2\\list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D6D87C7-DC6F-40F3-A6FA-CCE1C9745586}|Demo02_LinkedListC_V2\\Demo02_LinkedListC_V2.vcxproj|D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo02_LinkedListC_V2\\Program.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D6D87C7-DC6F-40F3-A6FA-CCE1C9745586}|Demo02_LinkedListC_V2\\Demo02_LinkedListC_V2.vcxproj|solutionrelative:Demo02_LinkedListC_V2\\Program.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D6D87C7-DC6F-40F3-A6FA-CCE1C9745586}|Demo02_LinkedListC_V2\\Demo02_LinkedListC_V2.vcxproj|D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo02_LinkedListC_V2\\List.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7D6D87C7-DC6F-40F3-A6FA-CCE1C9745586}|Demo02_LinkedListC_V2\\Demo02_LinkedListC_V2.vcxproj|solutionrelative:Demo02_LinkedListC_V2\\List.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{0EF26006-E48A-4EC1-9B37-80A31BA52B09}|Demo03_LinkedListCPP_V1\\Demo03_LinkedListCPP_V1.vcxproj|D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EF26006-E48A-4EC1-9B37-80A31BA52B09}|Demo03_LinkedListCPP_V1\\Demo03_LinkedListCPP_V1.vcxproj|solutionrelative:Demo03_LinkedListCPP_V1\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 175,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.c",
-              "DocumentMoniker": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo02_LinkedListC_V2\\Program.c",
-              "RelativeDocumentMoniker": "Demo02_LinkedListC_V2\\Program.c",
-              "ToolTip": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo02_LinkedListC_V2\\Program.c",
-              "RelativeToolTip": "Demo02_LinkedListC_V2\\Program.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-06-30T10:14:24.933Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "list.h",
-              "DocumentMoniker": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo02_LinkedListC_V2\\list.h",
-              "RelativeDocumentMoniker": "Demo02_LinkedListC_V2\\list.h",
-              "ToolTip": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo02_LinkedListC_V2\\list.h",
-              "RelativeToolTip": "Demo02_LinkedListC_V2\\list.h",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABMAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-30T09:55:40.469Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "List.c",
-              "DocumentMoniker": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo02_LinkedListC_V2\\List.c",
-              "RelativeDocumentMoniker": "Demo02_LinkedListC_V2\\List.c",
-              "ToolTip": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo02_LinkedListC_V2\\List.c",
-              "RelativeToolTip": "Demo02_LinkedListC_V2\\List.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2025-06-30T10:00:14.382Z",
+              "Title": "Program.cpp",
+              "DocumentMoniker": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\Program.cpp",
+              "RelativeDocumentMoniker": "Demo03_LinkedListCPP_V1\\Program.cpp",
+              "ToolTip": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\Program.cpp*",
+              "RelativeToolTip": "Demo03_LinkedListCPP_V1\\Program.cpp*",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-30T11:43:46.176Z",
               "EditorCaption": ""
             }
           ]

@@ -1,4 +1,5 @@
 ﻿  List.c
   Program.c
   Generating Code...
+D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo02_LinkedListC_V2\List.c(74,32): warning C4028: formal parameter 2 different from declaration
   Demo02_LinkedListC_V2.vcxproj -> D:\works\corporate\202506-bosch-pune-cpp\CppDemos\x64\Debug\Demo02_LinkedListC_V2.exe

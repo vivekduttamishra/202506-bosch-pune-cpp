@@ -1,7 +1,45 @@
 #include <stdio.h>
+#include <time.h>
 #include "list.h"
 
-int main() 
+void addNumberRange(List* list, int size) {
+	for (int i = 1; i <= size; i++)
+		listAppend(list, i);
+}
+
+long sum(List* list) {
+	int s = 0;
+	for (int i = 0; i < listLength(list); i++) {
+		s += listGet(list, i);
+	}
+
+	return s;
+}
+
+
+int main() {
+
+	int size = 50000;
+	List* list = listCreate();
+	
+	
+	long start = clock();
+	addNumberRange(list, size);
+	long end = clock();
+	printf("time take to add %d items in list is %d\n", size, end - start);
+
+
+	start = clock();
+	long result = sum(list);
+	end = clock();
+
+	printf("sum = %d\n",result); //result should be 5050
+	printf("time taken to sum %d items is %d\n", size, end - start);
+	return 0;
+}
+
+
+int test1() 
 {
 	List* l1 = listCreate();
 
