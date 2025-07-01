@@ -11,6 +11,7 @@ List* listCreate() {
 	
 	List* list = new List;
 	list->first = NULL;
+	list->last = NULL;
 	return list;
 }
 
@@ -18,23 +19,17 @@ int listAppend(List* list, int data) {
 	Node* newNode = new Node;
 	newNode->data = data;
 	newNode->next = NULL;
+	newNode->prev = list->last;
 
-	if (list->first) {
-		Node* n = list->first;
-		int count = 0;
-		while (n->next) {
-			n = n->next;
-			count++;
-		}
-		newNode->prev = n;
-		n->next = newNode;
-		return count+1; //new list size
+	if (!list->first) { //list is empty
+		list->first = list->last = newNode;
 	}
-	else {
-		newNode->prev = NULL;
-		list->first = newNode;
-		return 1;
-	}
+	else { //list has value
+		list->last->next = newNode; //linking current last to newNode
+		list->last = newNode; //setting newNode as the last.
+	}	
+
+	return 1;
 }
 
 
@@ -42,28 +37,61 @@ int listInsert(List* list, int index, int data) {
 
 	int size = listLength(list);
 	if (index < 0 || index >= size) {
-		return 0; //false
+		throw "Invalid Index";
 	}
 	
-	Node* n = list->first;
+	auto n = list->first;
 	for (int i = 0; i < index; i++) {
 		n = n->next;
 	}
-
-	Node* p = n->prev;
+	
+	auto p = n->prev;
 
 	//insert between p and n
-	Node* newNode = new Node;
+	auto newNode = new Node;
 	newNode->data = data;
 	newNode->next = n;
 	newNode->prev = p;
 	n->prev = newNode;
+
 	if (p) //if index!=0
 		p->next = newNode;
 	else //index index==0
 		list->first = newNode;
 
 	return 1; //success
+}
+
+int listRemove(List* list, int index) {
+	if (index<0 || index>listLength(list)) {
+		throw "Invalid Index";
+	}
+
+	auto delNode = list->first;
+	for (auto i = 0; i < index; i++)
+		delNode = delNode->next;
+
+	//let's put a pionter to nodes before after delNode
+	auto p = delNode->prev;
+	auto n = delNode->next;
+
+	if (p) //this is not the first node
+		p->next = n;
+	else //we are removing the first node
+		list->first = n;
+		
+	if (n) //this is not the last node
+		n->prev = p;
+	else
+		list->last = p;
+
+	auto delValue = delNode->data;
+
+	delete delNode;
+
+	return delValue;
+
+
 }
 
 
@@ -91,17 +119,30 @@ int listShow(List* list, const char* prompt) {
 		n = n->next;			
 	}
 
-	cout << "NULL" << endl; //endl just like "\n"
+	cout << endl; //endl just like "\n"
 	return c;
 }
 
 int listGet(List* list, int index) {
 	if (index < 0 || index >= listLength(list))
-		return -1;
+		throw "Invalid Index"; //C++ feature
+
 	Node* n = list -> first;
 	for (int i = 0; i < index; i++)
 		n = n->next;
 
 	return n->data;
 
+}
+
+int listSet(List* list, int index, int value) {
+	if (index < 0 || index >= listLength(list))
+		throw "Invalid Index"; //C++ feature
+	Node* n = list->first;
+	for (int i = 0; i < index; i++)
+		n = n->next;
+
+	auto currentValue = n->data;
+	n->data=value;
+	return currentValue;
 }

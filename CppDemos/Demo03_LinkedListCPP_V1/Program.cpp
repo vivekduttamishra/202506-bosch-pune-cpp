@@ -2,12 +2,15 @@
 #include <time.h>
 #include "list.h"
 
-void addNumberRange(List* list, int size) {
+#include <iostream>
+using namespace std;
+
+auto addNumberRange(List* list, int size) {
 	for (int i = 1; i <= size; i++)
 		listAppend(list, i);
 }
 
-long sum(List* list) {
+auto sum(List* list) {
 	int s = 0;
 	for (int i = 0; i < listLength(list); i++) {
 		s += listGet(list, i);
@@ -17,20 +20,24 @@ long sum(List* list) {
 }
 
 
-int main() {
 
-	int size = 1000;
-	List* list = listCreate();
+
+
+int testPerformance() {
+
+	int size = 1'00'000; //C++ 11+ 
+	auto list = listCreate(); //C++ 11+ same as List * list = listCreate()
 	
 	
-	long start = clock();
+	cout << "please wait..." << endl;
+	auto start = clock();
 	addNumberRange(list, size);
-	long end = clock();
+	auto end = clock();
 	printf("time take to add %d items in list is %d\n", size, end - start);
 
 
 	start = clock();
-	long result = sum(list);
+	auto result = sum(list);
 	end = clock();
 
 	printf("sum = %ld\n",result); //result should be 5050
@@ -39,7 +46,7 @@ int main() {
 }
 
 
-int test1() 
+int testAppendInsertDelete() 
 {
 	List* l1 = listCreate();
 
@@ -58,13 +65,66 @@ int test1()
 	int r3=listInsert(l1, 0, 5);
 	
 	printf("First three operations combined result: %d\n", r1 && r2 && r3);
-
-	int r4 = listInsert(l1, 100, 10); //should be false
-	printf("Last Operation should fail: %d\n", r4); //should be false
+	try {
+		listInsert(l1, 100, 10); //should throw
+		cout << "So Sorry! Code failed to throw" << endl;
+	}
+	catch (const char* error) {
+		cout << "GOT expected error: "<< error << endl; //should be false
+	}
+	
 
 	size = listShow(l1, "After insert");
 	printf("\tsize: %d\n", size);
 
+	cout << "removing from index 2: " << listRemove(l1, 2) << endl;
+	
+	cout << "removing from begining: " << listRemove(l1, 0) << endl;
 
+	cout << "remove from the end : " << listRemove(l1, listLength(l1) - 1) << endl;
+
+	listShow(l1, "After remove");
+
+
+	return 0;
+}
+
+
+void testGetSet() {
+	auto list = listCreate();
+	for (auto i = 0; i < 10; i++) {
+		listAppend(list,i);
+	}
+	listShow(list, "After Append");
+
+	for (auto i = 0; i < listLength(list); i++) {
+		
+		cout << i << "\t" << listGet(list, i) << endl;
+		auto old = listSet(list, i, i * 10);
+		cout << "\tvalue changed from " << old << " to " << i * 10 << endl;
+		
+	}
+
+	listShow(list, "After set");
+	try {
+		cout << "trying to access value on invalid index" << endl;
+		listSet(list, 100, 1); //should throw exception and crash application
+
+	}
+	catch (const char* errorMessage) {
+		cout << errorMessage << endl;
+		
+	}
+	
+
+	cout << "Normal Program shutdown" << endl;
+}
+
+
+int main() {
+	//testPerformance();
+	//testGetSet();
+
+	testAppendInsertDelete();
 	return 0;
 }

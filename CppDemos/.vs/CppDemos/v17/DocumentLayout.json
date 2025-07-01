@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{0EF26006-E48A-4EC1-9B37-80A31BA52B09}|Demo03_LinkedListCPP_V1\\Demo03_LinkedListCPP_V1.vcxproj|solutionrelative:Demo03_LinkedListCPP_V1\\List.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0EF26006-E48A-4EC1-9B37-80A31BA52B09}|Demo03_LinkedListCPP_V1\\Demo03_LinkedListCPP_V1.vcxproj|D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{0EF26006-E48A-4EC1-9B37-80A31BA52B09}|Demo03_LinkedListCPP_V1\\Demo03_LinkedListCPP_V1.vcxproj|solutionrelative:Demo03_LinkedListCPP_V1\\list.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0EF26006-E48A-4EC1-9B37-80A31BA52B09}|Demo03_LinkedListCPP_V1\\Demo03_LinkedListCPP_V1.vcxproj|D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{0EF26006-E48A-4EC1-9B37-80A31BA52B09}|Demo03_LinkedListCPP_V1\\Demo03_LinkedListCPP_V1.vcxproj|solutionrelative:Demo03_LinkedListCPP_V1\\Program.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 175,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "list.h",
+              "DocumentMoniker": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\list.h",
+              "RelativeDocumentMoniker": "Demo03_LinkedListCPP_V1\\list.h",
+              "ToolTip": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\list.h",
+              "RelativeToolTip": "Demo03_LinkedListCPP_V1\\list.h",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-07-01T05:03:28.611Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -28,20 +45,20 @@
               "RelativeDocumentMoniker": "Demo03_LinkedListCPP_V1\\List.cpp",
               "ToolTip": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\List.cpp",
               "RelativeToolTip": "Demo03_LinkedListCPP_V1\\List.cpp",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAF0AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAAFkAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-30T11:45:32.126Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cpp",
               "DocumentMoniker": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\Program.cpp",
               "RelativeDocumentMoniker": "Demo03_LinkedListCPP_V1\\Program.cpp",
               "ToolTip": "D:\\works\\corporate\\202506-bosch-pune-cpp\\CppDemos\\Demo03_LinkedListCPP_V1\\Program.cpp",
               "RelativeToolTip": "Demo03_LinkedListCPP_V1\\Program.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-30T11:43:46.176Z",
               "EditorCaption": ""

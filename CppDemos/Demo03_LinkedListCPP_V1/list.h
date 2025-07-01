@@ -3,18 +3,22 @@
 
 #define POS_END -1
 
-typedef struct Node 
+
+//C++ doesn't require typedef for struct/class/union
+//we can use them without using struct/class keyword
+struct Node 
 {
 	int data;
 	struct Node* next;
 	struct Node* prev; //optional to implement double linked list
-} Node;
+};
 
 
-typedef struct
+struct List
 {
 	Node* first;
-}List;
+	Node* last; //to help append.
+};
 
 
 List* listCreate();
