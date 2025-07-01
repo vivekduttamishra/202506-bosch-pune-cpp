@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="errors.h" />
     <ClInclude Include="list.h" />
+    <ClInclude Include="Program.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="List.cpp" />
