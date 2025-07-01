@@ -47,6 +47,10 @@ int testPerformance() {
 }
 
 
+
+
+
+
 int testAppendInsertDelete() 
 {
 	List* l1 = listCreate();
@@ -131,10 +135,51 @@ void testGetSet() {
 }
 
 
+void testGetIndex(List* list, int getIndex) {
+	auto result = listGet(list, getIndex);
+	cout << "Got " << result << endl;
+}
+
+void testRemoveIndex(List* list, int removeIndex) {
+	auto result = listRemove(list, removeIndex);
+	cout << "Removed " << result << endl;
+}
+
+void testExceptions(int listSize, int removeIndex, int getIndex, const char * testName) {
+	auto list = listCreate();
+	for (auto i = 0; i < listSize; i++)
+		listAppend(list, i);
+	try {
+
+		cout << testName << endl;
+		testRemoveIndex(list, removeIndex);
+		testGetIndex(list, getIndex);
+	}
+	catch (IndexError e) {
+		cout << "invalid index " << e.index << endl;
+	}
+	cout << "-----\n\n";
+
+
+}
+
+void testExceptionSuite() {
+	//happy path
+	testExceptions(5, 3, 2, "happy path");
+
+	testExceptions(5, 3, 50, "Remove succeeds, get fails");
+
+	testExceptions(5, 50, 3, "Remove fails, get never called");
+}
+
+
+
 int main() {
-	//testPerformance();
+
+	//testExceptionSuite();
+	testPerformance();
 	//testGetSet();
 
-	testAppendInsertDelete();
+	//testAppendInsertDelete();
 	return 0;
 }

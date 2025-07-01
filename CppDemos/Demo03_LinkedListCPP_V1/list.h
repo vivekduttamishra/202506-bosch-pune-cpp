@@ -18,6 +18,7 @@ struct List
 {
 	Node* first;
 	Node* last; //to help append.
+	int size; //to keep track of list size
 };
 
 

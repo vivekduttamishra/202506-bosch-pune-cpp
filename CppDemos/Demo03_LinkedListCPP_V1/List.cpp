@@ -1,6 +1,8 @@
 //#include <malloc.h>
 //#include <stdio.h>
 
+#if 1
+
 #include <iostream>
 using namespace std;
 
@@ -13,6 +15,7 @@ List* listCreate() {
 	List* list = new List;
 	list->first = NULL;
 	list->last = NULL;
+	list->size = 0;
 	return list;
 }
 
@@ -30,7 +33,9 @@ int listAppend(List* list, int data) {
 		list->last = newNode; //setting newNode as the last.
 	}	
 
-	return 1;
+	list->size++; //increase list size
+
+	return list->size;
 }
 
 
@@ -40,7 +45,7 @@ Node* listLocateNode(List* list, int index) {
 		index = size - 1;
 	if (index < 0 || index >= size) {
 		//throw "Invalid Index";
-		throw IndexError{ index };  //here we are creating normal object not dynamic object
+		throw IndexError{ index };  
 
 	}
 
@@ -70,6 +75,7 @@ int listInsert(List* list, int index, int data) {
 	else //index index==0
 		list->first = newNode;
 
+	list->size++; //update size
 	return 1; //success
 }
 
@@ -94,19 +100,14 @@ int listRemove(List* list, int index) {
 	auto delValue = delNode->data;
 
 	delete delNode;
-
+	list->size--;
 	return delValue;
-
-
 }
 
 
 int listLength(List* list) {
-	int c = 0;
-	for (Node* n = list->first; n; n = n->next)
-		c++;
-
-	return c;
+	
+	return list->size;
 }
 
 int listShow(List* list, const char* prompt) {
@@ -158,3 +159,5 @@ int listSet(List* list, int index, int value) {
 	n->data=value;
 	return currentValue;
 }
+
+#endif
