@@ -5,6 +5,7 @@
 using namespace std;
 
 #include "list.h"
+#include "errors.h"
 
 
 List* listCreate() {
@@ -33,17 +34,27 @@ int listAppend(List* list, int data) {
 }
 
 
-int listInsert(List* list, int index, int data) {
-
+Node* listLocateNode(List* list, int index) {
 	int size = listLength(list);
+	if (index == POS_END)
+		index = size - 1;
 	if (index < 0 || index >= size) {
-		throw "Invalid Index";
+		//throw "Invalid Index";
+		throw IndexError{ index };  //here we are creating normal object not dynamic object
+
 	}
-	
+
 	auto n = list->first;
 	for (int i = 0; i < index; i++) {
 		n = n->next;
 	}
+
+	return n;
+}
+
+int listInsert(List* list, int index, int data) {
+
+	auto n = listLocateNode(list, index);
 	
 	auto p = n->prev;
 
@@ -63,13 +74,8 @@ int listInsert(List* list, int index, int data) {
 }
 
 int listRemove(List* list, int index) {
-	if (index<0 || index>listLength(list)) {
-		throw "Invalid Index";
-	}
 
-	auto delNode = list->first;
-	for (auto i = 0; i < index; i++)
-		delNode = delNode->next;
+	auto delNode = listLocateNode(list, index);
 
 	//let's put a pionter to nodes before after delNode
 	auto p = delNode->prev;
@@ -124,23 +130,29 @@ int listShow(List* list, const char* prompt) {
 }
 
 int listGet(List* list, int index) {
-	if (index < 0 || index >= listLength(list))
-		throw "Invalid Index"; //C++ feature
 
-	Node* n = list -> first;
-	for (int i = 0; i < index; i++)
-		n = n->next;
+	return listLocateNode(list, index)->data;
 
-	return n->data;
+	//if (index < 0 || index >= listLength(list))
+	//	throw "Invalid Index"; //C++ feature
+
+	//Node* n = list -> first;
+	//for (int i = 0; i < index; i++)
+	//	n = n->next;
+
+	//return n->data;
 
 }
 
 int listSet(List* list, int index, int value) {
-	if (index < 0 || index >= listLength(list))
-		throw "Invalid Index"; //C++ feature
-	Node* n = list->first;
-	for (int i = 0; i < index; i++)
-		n = n->next;
+	//if (index < 0 || index >= listLength(list))
+	//	throw "Invalid Index"; //C++ feature
+	//Node* n = list->first;
+	//for (int i = 0; i < index; i++)
+	//	n = n->next;
+
+	auto n = listLocateNode(list, index);
+
 
 	auto currentValue = n->data;
 	n->data=value;

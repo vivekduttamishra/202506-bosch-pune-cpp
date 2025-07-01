@@ -23,6 +23,7 @@
     <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="errors.h" />
     <ClInclude Include="list.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

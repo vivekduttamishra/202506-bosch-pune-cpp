@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "list.h"
+#include "errors.h"
 
 #include <iostream>
 using namespace std;
@@ -72,6 +73,9 @@ int testAppendInsertDelete()
 	catch (const char* error) {
 		cout << "GOT expected error: "<< error << endl; //should be false
 	}
+	catch (IndexError error) {
+		cout << "Invalid Index :" << error.index << " passed" << endl;
+	}
 	
 
 	size = listShow(l1, "After insert");
@@ -81,8 +85,9 @@ int testAppendInsertDelete()
 	
 	cout << "removing from begining: " << listRemove(l1, 0) << endl;
 
-	cout << "remove from the end : " << listRemove(l1, listLength(l1) - 1) << endl;
+	//cout << "remove from the end : " << listRemove(l1, listLength(l1) - 1) << endl;
 
+	cout << "remove from the end : " << listRemove(l1, POS_END) << endl;
 	listShow(l1, "After remove");
 
 
@@ -111,10 +116,15 @@ void testGetSet() {
 		listSet(list, 100, 1); //should throw exception and crash application
 
 	}
-	catch (const char* errorMessage) {
+	catch (const char* errorMessage) { //this catch block is no more needed after change in logic
 		cout << errorMessage << endl;
 		
 	}
+	catch (IndexError error) {
+		cout << "Invalid Index " << error.index << endl;
+	}
+
+	cout << "Last item in the list is :" << listGet(list, POS_END) << endl;
 	
 
 	cout << "Normal Program shutdown" << endl;
