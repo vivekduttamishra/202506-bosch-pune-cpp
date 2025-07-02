@@ -1,2 +1,15 @@
 ﻿  Program.cpp
-  Demo04_LinkedList_CPP_V2.vcxproj -> D:\works\corporate\202506-bosch-pune-cpp\CppDemos\x64\Debug\Demo04_LinkedList_CPP_V2.exe
+D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(181,10): error C2660: 'List::Locate': function does not take 1 arguments
+  (compiling source file 'Program.cpp')
+      D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(75,8):
+      see declaration of 'List::Locate'
+      D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(181,10):
+      while trying to match the argument list '(int)'
+  
+D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(187,12): error C2660: 'List::Locate': function does not take 1 arguments
+  (compiling source file 'Program.cpp')
+      D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(75,8):
+      see declaration of 'List::Locate'
+      D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(187,12):
+      while trying to match the argument list '(int)'
+  

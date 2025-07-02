@@ -2,6 +2,7 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include <math.h>
 #include "errors.h"
 
 using namespace std;
@@ -30,7 +31,9 @@ struct List
 		first = nullptr; //C++ 11 replacement of NULL
 		last = nullptr; 
 		size = 0;
-		cout << "List constructor called" << endl;
+		current = nullptr;
+		currentIndex = -1; //nothing to go on.
+		//cout << "List constructor called" << endl;
 		//return this;
 	}
 	List* Append( int data) {
@@ -69,7 +72,7 @@ struct List
 	}
 private:
 	//every thing here onwards is private
-	Node* Locate( int index) {
+	Node* Locate( int index, bool updateCurrent=true) {
 		int size = Length();
 		if (index == POS_END)
 			index = size - 1;
@@ -78,17 +81,59 @@ private:
 
 		}
 
-		auto n = first;
-		for (int i = 0; i < index; i++) {
-			n = n->next;
+		//if we never accessed any item
+		//lets fix current to begining
+		//this avoids calculation error in next step
+		if (currentIndex == -1) {
+			current = first;
+			currentIndex = 0;
 		}
 
+		//find out the nearest anchor node, distance and direction
+		auto deltaFirst = index; //7
+		auto deltaCurrent = abs( index-currentIndex); //1 
+		auto deltaEnd = (size - 1)-index; //2
+		Node* anchor = nullptr;
+		int direction = 1;
+		int distance = 0;
+
+		if (deltaFirst <= deltaCurrent && deltaFirst <= deltaEnd) {
+			anchor = first;
+			distance = deltaFirst;
+			direction = 1; //forward
+		}
+		else if (deltaEnd <= deltaCurrent && deltaEnd <= deltaFirst) {
+			anchor = last;
+			distance = deltaEnd;
+			direction = -1;
+		}
+		else {
+			anchor = current;
+			distance = deltaCurrent;
+			direction = index > currentIndex ? 1 : -1;
+		}
+
+
+		cout << "anchor:" << (anchor == first ? "First" : anchor == last ? "Last" : "current")
+			<< "\tdistance:" << distance
+			<< "\tdirection:" << (direction == 1 ? "next" : "prev") << endl;
+		auto n = anchor;
+
+		for (int i = 0; i < distance; i++) {
+			n = direction==1? n->next : n->prev;
+		}
+
+		if (updateCurrent) {
+
+			current = n;
+			currentIndex = index;
+		}
 		return n;
 	}
-
+public:
 	int Insert(List* list, int index, int data) {
 
-		auto n = Locate(index);
+		auto n = Locate(index,false); //locate without updating current
 
 		auto p = n->prev;
 
@@ -102,14 +147,21 @@ private:
 		else //index index==0
 			list->first = newNode;
 
+		//if a node is added on or before current index
+		//current nodes' index changes
+		if (index <= currentIndex) {
+			currentIndex++;
+		}
+
+
 		list->size++; //update size
 		return 1; //success
 	}
-public:
+
 	//everythign below here is public
 	int Remove(List* list, int index) {
 
-		auto delNode = Locate( index);
+		auto delNode = Locate( index,false);
 
 		//let's put a pionter to nodes before after delNode
 		auto p = delNode->prev;
@@ -127,8 +179,22 @@ public:
 
 		auto delValue = delNode->data;
 
+		//if we removed currentIndex item
+		//currenIndex becomes next node
+		if (index == currentIndex) {
+			current = delNode->next;
+		}
+		//if we remove a node that comes before current node
+		//curren node index reduces.
+		else if (index < currentIndex) {
+			currentIndex--;
+		}
 		delete delNode;
 		list->size--;
+
+		
+
+
 		return delValue;
 	}
 	int Get( int index) {
@@ -150,6 +216,8 @@ private: //everything below this point is private unless we change scope again
 		Node* first;
 		Node* last; //to help append.
 		int size; //to keep track of list size
+		Node* current;
+		int currentIndex;
 };
 
 
