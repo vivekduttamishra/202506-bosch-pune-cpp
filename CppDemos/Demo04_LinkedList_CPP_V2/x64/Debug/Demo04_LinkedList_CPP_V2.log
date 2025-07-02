@@ -1,13 +1,2 @@
 ﻿  Program.cpp
-D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\Program.cpp(33,6): error C2248: 'List::size': cannot access private member declared in class 'List'
-      D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(152,7):
-      see declaration of 'List::size'
-      D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(25,8):
-      see declaration of 'List'
-  
-D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\Program.cpp(38,8): error C2248: 'List::Locate': cannot access private member declared in class 'List'
-      D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(72,8):
-      see declaration of 'List::Locate'
-      D:\works\corporate\202506-bosch-pune-cpp\CppDemos\Demo04_LinkedList_CPP_V2\list.h(25,8):
-      see declaration of 'List'
-  
+  Demo04_LinkedList_CPP_V2.vcxproj -> D:\works\corporate\202506-bosch-pune-cpp\CppDemos\x64\Debug\Demo04_LinkedList_CPP_V2.exe

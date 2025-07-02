@@ -1,8 +1,10 @@
 #include <iostream>
+#include <time.h>
 using namespace std;
 
 #include "list.h"
 #include "Program.h"
+
 
 List* fillValues(List* list, int size, int fillValue = 0) {
 	for (auto i = 0; i < size; i++)
@@ -24,21 +26,31 @@ void fluentApiDemo() {
 		->Show("After Fill");
 }
 
+
+long sum(List* list) {
+	long result = 0;
+	for (auto i = 0; i < list->Length(); i++)
+		result += list->Get(i);
+
+	return result;
+}
+
+
 int main() {
 
-	
-	
-	auto list = fillValues(new List, 10, 100)->Show("Original List");
+	auto size = 1'00'000;
+	List list;
+	auto start = clock();
+	fillValues(&list, size);
+	auto end = clock();
+	cout << "Total time taken to add "
+		<< size << " values to list: " << (end - start) << "ms";
 
-	//list->size = 3; //we misreported the size.
-
-	//let's now search for 5th element
-	//cout << list->Get(5) << endl; //list thinks it has a size of 3
-
-	//list->Locate(3)->next = nullptr; //now we can't reach beyond 3 index;
-
-	list->Show("after calling locate");
-
+	start = clock();
+	auto result = sum(&list); 
+	end = clock();
+	cout << "sum of " << size << " items is " << result << endl
+		<< "total time taken is : " << (end - start) << "ms";
 
 
 	
