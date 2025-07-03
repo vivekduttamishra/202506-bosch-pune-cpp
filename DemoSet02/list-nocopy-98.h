@@ -35,23 +35,15 @@ struct List
 
 	
 
-
+    private: 
 	List(const List &source){
-		init();
-		copy(source);
-	}
-
-	
+		//no logic needed as no one will call.
+	}	
 
 	List & operator=(const List &source) {
 
-		//to eliminate stupid call lie //list1 = list1;
-		if(this== &source){
-			return *this; //do nothing
-		}
-
-		clear(); //remove current values from the list
-		copy(source); //copy values from source
+		//no logic needed as no one will call.
+        //this is just to avoid compiler error
 		return *this;  //to chain calls like list1 = list2 = list3;
 	}
 public:
@@ -62,36 +54,11 @@ public:
 		clear();
 	}
 
-	//move constructor
-	List(List &&source) {
-		init(); //initialize current list
-		moveFrom(source); //move values from source
-		
-	}
-
 	List & copy(const List &source) {
 		clear(); //remove current values from the list
 		for (auto node = source.first; node; node = node->next) {
 			Append(node->data);
 		}
-		
-		return *this;
-	}
-
-	List & moveFrom(List &source){
-		//step #1  lets remove original values
-		clear(); //remove current values from the list
-
-		//step 2. take ownership of source values.
-		first=source.first;
-		last=source.last;
-		size=source.size;
-		current=source.current;
-		currentIndex=source.currentIndex;
-
-		//step 2. reset source.
-		source.init(); //now source is empty and doesn't hold the actual data.
-
 		
 		return *this;
 	}

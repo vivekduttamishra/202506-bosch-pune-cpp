@@ -34,39 +34,15 @@ struct List
 	}
 
 	
+	List(const List &source)=delete;
 
+	List & operator=(const List &source)=delete;
 
-	List(const List &source){
-		init();
-		copy(source);
-	}
-
-	
-
-	List & operator=(const List &source) {
-
-		//to eliminate stupid call lie //list1 = list1;
-		if(this== &source){
-			return *this; //do nothing
-		}
-
-		clear(); //remove current values from the list
-		copy(source); //copy values from source
-		return *this;  //to chain calls like list1 = list2 = list3;
-	}
-public:
-	~List(){
+    ~List(){
 		
 		cout<<"List destroyed ";
 		printf("@%ld\n", this);
 		clear();
-	}
-
-	//move constructor
-	List(List &&source) {
-		init(); //initialize current list
-		moveFrom(source); //move values from source
-		
 	}
 
 	List & copy(const List &source) {
@@ -74,24 +50,6 @@ public:
 		for (auto node = source.first; node; node = node->next) {
 			Append(node->data);
 		}
-		
-		return *this;
-	}
-
-	List & moveFrom(List &source){
-		//step #1  lets remove original values
-		clear(); //remove current values from the list
-
-		//step 2. take ownership of source values.
-		first=source.first;
-		last=source.last;
-		size=source.size;
-		current=source.current;
-		currentIndex=source.currentIndex;
-
-		//step 2. reset source.
-		source.init(); //now source is empty and doesn't hold the actual data.
-
 		
 		return *this;
 	}
@@ -221,15 +179,15 @@ public:
 		return *this;
 	}
 
-	List operator+(const List &second) const {
-		List result;
+	List& operator+(const List &second) const {
+		List *result=new List;
 		for (auto node = first; node; node = node->next) {
-			result.Append(node->data);
+			result->Append(node->data);
 		}
 		for (auto node = second.first; node; node = node->next) {
-			result.Append(node->data);
+			result->Append(node->data);
 		}
-		return result;
+		return * result;
 	}
 
 	friend List operator *(const List &l1, const List &l2);
