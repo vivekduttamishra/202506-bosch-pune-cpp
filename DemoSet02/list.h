@@ -33,7 +33,14 @@ struct List
 		printf("@%ld\n", this);
 	}
 
-	
+	List(const List &source){
+		init();
+		for(auto node = source.first; node; node = node->next) {
+			Append(node->data);
+		}
+		cout << "List created using copy constructor ";
+		printf("@%ld\n", this);
+	}
 
 	~List(){
 		
@@ -77,11 +84,11 @@ struct List
 
 	}
 	
-	int Length() {
+	int Length() const {
 		return this->size; 
 	}
 
-	List& Show( string prompt) {
+	const List& Show( string prompt) const{
 		cout << prompt << ":\t";
 		for (auto node = first; node; node = node->next)
 			cout << node->data << "\t";
@@ -157,7 +164,30 @@ private:
 		}
 		return n;
 	}
+
+	
+
 public:
+
+	List & operator<<( int data) {
+		Append(data);
+		return *this;
+	}
+
+	List operator+(const List &second) const {
+		List result;
+		for (auto node = first; node; node = node->next) {
+			result.Append(node->data);
+		}
+		for (auto node = second.first; node; node = node->next) {
+			result.Append(node->data);
+		}
+		return result;
+	}
+
+	friend List operator *(const List &l1, const List &l2);
+
+
 	int Insert( int index, int data) {
 
 		auto n = Locate(index,false); //locate without updating current
@@ -224,7 +254,7 @@ public:
 
 		return delValue;
 	}
-	int Get( int index) {
+	int Get( int index)  {
 
 		return Locate(index)->data;
 
