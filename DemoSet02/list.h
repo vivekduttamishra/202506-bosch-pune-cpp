@@ -28,31 +28,33 @@ struct List
 	//default scope is public for struct
 
 	List() {
-		first = nullptr; //C++ 11 replacement of NULL
-		last = nullptr; 
-		size = 0;
-		current = nullptr;
-		currentIndex = -1; //nothing to go on.
-		// cout << "List constructor created @: " ;
-		// printf("\t%d\n",this);
-		//return this;
+		init();		
+		cout << "List created ";
+		printf("@%ld\n", this);
 	}
 
-	// List(List &list){
-	// 	first = nullptr; //C++ 11 replacement of NULL
-	// 	last = nullptr; 
-	// 	size = 0;
-	// 	current = nullptr;
-	// 	currentIndex = -1; //nothing to go on.
-	// 	// cout << "List copy constructor created @: " ;
-	// 	// printf("\t%d\n",this);
-	// }
+	
 
 	~List(){
-		//cout<<"List destructor called @";
-		//printf("\t%d\n",this);
+		
+		cout<<"List destroyed ";
+		printf("@%ld\n", this);
+		clear();
 	}
-	List* Append( int data) {
+
+	List & clear(){
+		Node * p = first;
+		while(p){
+			auto delNode=p;
+			p=p->next;
+			delete delNode;
+		}
+		init();
+		return *this;
+	}
+
+
+	List &Append( int data) {
 		
 		Node* newNode;
 		newNode= new Node(data,nullptr, last);
@@ -71,7 +73,7 @@ struct List
 
 		size++; //increase list size
 
-		return this;
+		return *this;
 
 	}
 	
@@ -79,14 +81,23 @@ struct List
 		return this->size; 
 	}
 
-	List* Show( string prompt) {
+	List& Show( string prompt) {
 		cout << prompt << ":\t";
 		for (auto node = first; node; node = node->next)
 			cout << node->data << "\t";
 		cout << endl;
-		return this;
+		return *this;
 	}
 private:
+
+	void init() {
+		first = nullptr; //C++ 11 replacement of NULL
+		last = nullptr; 
+		size = 0;
+		current = nullptr;
+		currentIndex = -1; //nothing to go on.
+	}
+
 	//every thing here onwards is private
 	Node* Locate( int index, bool updateCurrent=true) {
 		int size = Length();
@@ -130,9 +141,9 @@ private:
 		}
 
 
-		cout << "anchor:" << (anchor == first ? "First" : anchor == last ? "Last" : "current")
-			<< "\tdistance:" << distance
-			<< "\tdirection:" << (direction == 1 ? "next" : "prev") << endl;
+		// cout << "anchor:" << (anchor == first ? "First" : anchor == last ? "Last" : "current")
+		// 	<< "\tdistance:" << distance
+		// 	<< "\tdirection:" << (direction == 1 ? "next" : "prev") << endl;
 		auto n = anchor;
 
 		for (int i = 0; i < distance; i++) {
@@ -147,7 +158,7 @@ private:
 		return n;
 	}
 public:
-	int Insert(List* list, int index, int data) {
+	int Insert( int index, int data) {
 
 		auto n = Locate(index,false); //locate without updating current
 
@@ -161,7 +172,7 @@ public:
 		if (p) //if index!=0
 			p->next = newNode;
 		else //index index==0
-			list->first = newNode;
+			first = newNode;
 
 		//if a node is added on or before current index
 		//current nodes' index changes
@@ -170,12 +181,12 @@ public:
 		}
 
 
-		list->size++; //update size
+		size++; //update size
 		return 1; //success
 	}
 
 	//everythign below here is public
-	int Remove(List* list, int index) {
+	int Remove( int index) {
 
 		auto delNode = Locate( index,false);
 
@@ -186,12 +197,12 @@ public:
 		if (p) //this is not the first node
 			p->next = n;
 		else //we are removing the first node
-			list->first = n;
+			first = n;
 
 		if (n) //this is not the last node
 			n->prev = p;
 		else
-			list->last = p;
+			last = p;
 
 		auto delValue = delNode->data;
 
@@ -206,7 +217,7 @@ public:
 			currentIndex--;
 		}
 		delete delNode;
-		list->size--;
+		size--;
 
 		
 
