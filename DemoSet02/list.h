@@ -323,6 +323,32 @@ public:
 		return node->data;
 	}
 
+	List * searchEvens(){
+		List * result=new List();
+
+		for(auto node=first;node;node=node->next){
+			if(node->data%2==0){
+				result->Append(node->data);
+			}
+		}
+
+		return result;
+
+	}
+
+	List * searchRange(int min,int max){
+		List * result=new List();
+
+		for(auto node=first;node;node=node->next){
+			if(node->data>=min && node->data<max){
+				result->Append(node->data);
+			}
+		}
+
+		return result;
+
+	}
+
 private: //everything below this point is private unless we change scope again
 		Node* first;
 		Node* last; //to help append.
@@ -342,3 +368,34 @@ inline ostream & operator<<(ostream &os, const List &list) {
 	
 	return os;
 }
+
+inline ostream &operator<<(ostream &os, const List * list){
+	return os << (*list);
+}
+
+inline List* searchEvens(List &list){
+
+	List *result=new List;
+	for(auto i=0;i<list.Length();i++){
+		auto v= list[i];
+		if( v%2==0)
+			result->Append(v);
+	}
+
+	return result;
+}
+
+typedef bool (*MatchFunction) (int);
+inline List* search(List &list, MatchFunction matcher){
+
+	List *result=new List;
+	for(auto i=0;i<list.Length();i++){
+		auto v= list[i];
+		if( matcher(v))
+			result->Append(v);
+	}
+
+	return result;
+}
+
+

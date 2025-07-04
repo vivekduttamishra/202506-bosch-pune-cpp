@@ -24,6 +24,38 @@ struct Node
     }
 };
 
+template<typename T>
+class ListSmartPointer{
+
+    Node<T> * ptr;
+    public:
+    ListSmartPointer( Node<T> *ptr):ptr(ptr){}
+
+    ListSmartPointer  operator++(){
+        ptr=ptr->next;
+        return *this;
+    }
+
+    //add a dummy value of any type to mark postfix
+    ListSmartPointer operator++(int dummy){
+        auto old = ListSmartPointer<T>(ptr);
+        ptr=ptr->next;
+        return old;
+    }
+
+    T& operator*(){
+        return ptr->data;
+    }
+
+    bool operator!=(ListSmartPointer<T> &second){
+        return ptr!=second.ptr;
+    }
+
+   
+
+
+};
+
 template <typename X> // X applies in this class block only
 class List
 {
@@ -115,11 +147,12 @@ public:
     List()
     {
         init();
-        
+        cout<<"List created @"<<this<<endl;
     }
 
     List(const List<X> &source)
     {
+        cout<<"List copy created @"<<this<<endl;
         init();
         copy(source);
     }
@@ -142,8 +175,14 @@ public:
     ~List()
     {
 
-       
-        clear();
+       cout<<"List destroyed @"<<this<<endl;
+        auto p = first;
+        while (p)
+        {
+            auto delNode = p;
+            p = p->next;
+            delete delNode;
+        }
     }
 
     // move constructor
@@ -192,6 +231,12 @@ public:
             delete delNode;
         }
         init();
+        return *this;
+    }
+
+    template<typename...Args>
+    List<X> & AppendAll(Args...values){
+        //Append(values)...;
         return *this;
     }
 
@@ -339,6 +384,22 @@ public:
         auto node = Locate(index);
         return node->data;
     }
+
+
+    ListSmartPointer<X> begin(){
+        return ListSmartPointer<X>(first);
+    }
+
+    ListSmartPointer<X> end(){
+        return ListSmartPointer<X>(nullptr);
+    }
+
+    ListSmartPointer<X> at(int index){
+        auto node = Locate(index);
+        return ListSmartPointer<X>(node);
+    }
+
+
 };
 
 template <typename X>
